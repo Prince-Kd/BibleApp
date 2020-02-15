@@ -5,8 +5,10 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import ReadScreen from '../screens/ReadScreen';
+import PlansScreen from '../screens/PlansScreen';
+import SearchScreen from '../screens/SearchScreen';
+import MoreScreen from '../screens/MoreScreen'
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -25,53 +27,82 @@ HomeStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
+      name={Platform.OS === 'ios'? `ios-home`: 'md-home'}/>
   ),
 };
 
 HomeStack.path = '';
 
-const LinksStack = createStackNavigator(
+const ReadStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    Read: ReadScreen,
   },
   config
 );
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+ReadStack.navigationOptions = {
+  tabBarLabel: 'Read',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-book' : 'md-book'} />
   ),
 };
 
-LinksStack.path = '';
+ReadStack.path = '';
 
-const SettingsStack = createStackNavigator(
+const PlansStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    Plans: PlansScreen,
   },
   config
 );
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+PlansStack.navigationOptions = {
+  tabBarLabel: 'Plans',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-checkmark' : 'md-checkmark'} />
   ),
 };
 
-SettingsStack.path = '';
+PlansStack.path = '';
+
+const SearchStack = createStackNavigator(
+  {
+    Search: SearchScreen,
+  },
+  config
+);
+
+SearchStack.navigationOptions = {
+  tabBarLabel: 'Search',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-search' : 'md-search'} />
+  ),
+};
+
+SearchStack.path = '';
+
+const MoreStack = createStackNavigator(
+  {
+    More: MoreScreen,
+  },
+  config
+);
+
+MoreStack.navigationOptions = {
+  tabBarLabel: 'More',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-menu' : 'md-menu'} />
+  ),
+};
+
+MoreStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
-  LinksStack,
-  SettingsStack,
+  ReadStack,
+  PlansStack,
+  SearchStack,
+  MoreStack
 });
 
 tabNavigator.path = '';

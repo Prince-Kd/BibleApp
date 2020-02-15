@@ -11,188 +11,129 @@ import {
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function HomeScreen() {
-  return (
-    <View style={styles.container}>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}>
-        <View style={styles.welcomeContainer}>
-          <Image
-            source={
-              __DEV__
-                ? require('../assets/images/robot-dev.png')
-                : require('../assets/images/robot-prod.png')
-            }
-            style={styles.welcomeImage}
-          />
+  return(
+    <ScrollView>
+    <View style={{backgroundColor:"white" }}>
+      <View style={{
+        flexDirection:'row',
+        marginTop:10,
+        borderWidth:1, 
+        borderColor:'white',
+        borderBottomColor:"#dedede", 
+        height:80, alignItems:"center",
+        paddingLeft:10 
+        }}>
+        <View style={{flex:8,}}><Text style={{fontWeight:"bold", fontSize:20}}>YouVersion</Text></View>
+        <View style={{borderRadius:30, flex:1,marginTop:10, height:40}}>
+          <Ionicons name="md-people" size={26}/>
         </View>
-
-        <View style={styles.getStartedContainer}>
-          <DevelopmentModeNotice />
-
-          <Text style={styles.getStartedText}>Get started by opening</Text>
-
-          <View
-            style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <MonoText>screens/HomeScreen.js</MonoText>
-          </View>
-
-          <Text style={styles.getStartedText}>
-            Change this text and your app will automatically reload.
-          </Text>
-        </View>
-
-        <View style={styles.helpContainer}>
-          <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>
-              Help, it didn’t automatically reload!
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
-
-      <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>
-          This is a tab bar. You can edit it in:
-        </Text>
-
-        <View
-          style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-          <MonoText style={styles.codeHighlightText}>
-            navigation/MainTabNavigator.js
-          </MonoText>
+        <View style={{borderRadius:50, flex:1.5, height:50,   }}>
+          <Image source={require('../assets/images/kd.jpg')}
+          style={{marginTop:4 ,width: 40, height: 40, borderRadius: 30 }}/>
         </View>
       </View>
+      <View style={styles.box}>
+          <View style={{paddingLeft:10, flex:2,  flexDirection:'row'}}>
+           <View style={{flex:8,justifyContent:'center'}}><Text style={{fontWeight:'bold', fontSize:16}}>Bible App Activity</Text></View> 
+           <View style={{flex:1.5,justifyContent:'center'}}><Text style={{fontWeight:'bold', fontSize:16, color:'#1bab35'}}>More</Text></View>
+          </View>
+          <View style={{flex:3, flexDirection: 'row'}}>
+          <View style={{paddingLeft:10,flex:2}}>
+              <Text>Streak</Text>
+              <Text style={{color:'#1bab35', fontWeight:'bold', fontSize:19}}>8</Text>
+
+            </View>
+            <View style={{flex:8}}>
+            <Text>Perfect Weeks</Text>
+            <Text style={{color:'#065c15', fontWeight:'bold', fontSize:19}}>5</Text>
+            </View>
+
+          </View>
+          <View style={{justifyContent:'center', marginHorizontal:10, flex:2,borderTopWidth:1, borderTopColor:'#dedede'}}>
+          <Text style={{fontWeight:'bold', fontSize:12}}>41 days in the app this year</Text>
+          </View>
+
+
+
+      </View>
+      <View style={styles.box}>
+          <View style={{flexDirection:'row', paddingLeft:20,flex:1.5}}>
+            <View style={{justifyContent:'center',flex:1}}>
+              <Ionicons name='md-sunny' size={26} />
+            </View>
+            <View style={{justifyContent:'center',flex:8}}>
+              <Text style={{fontSize:16}}>Verse of the Day</Text>
+              <Text style={{fontWeight:'bold', fontSize:16}}>Jeremiah 17:7 NIV</Text>
+            </View>
+          </View>
+          <View style={{paddingLeft:20, flex:1.7, justifyContent:'center'}}>
+            <Text style={{fontSize:16}}>7 "But blessed is the one who trusts in the Lord, whose confidence is in him.</Text>
+          </View>
+          <View style={{paddingLeft:20,flex:1.2, flexDirection:'row'}}>
+            <View style={{justifyContent:'center',flex:7}}>
+              <Text style={{fontWeight:'bold', color:'#1bab35',fontSize:14}}>COMPARE VERSIONS</Text>
+            </View>
+            <View style={{justifyContent:'center',flex:2}}><Ionicons name='md-share' size={25} color='#dedede'/>
+            </View>
+            <View style={{justifyContent:'center',flex:2}}><Ionicons name='md-image' size={25} color='#dedede'/></View>
+            <View style={{justifyContent:'center',flex:1}}><Ionicons name='md-more' size={25} color='#dedede'/></View>
+
+          </View>
+        </View>
+        <View style={{
+          backgroundColor: "white",
+          height: 500,
+          margin: 5,
+          flexDirection: "column",
+          borderWidth: 1,
+          borderColor: "#dedede",
+          borderRadius:3
+          }}>
+            <View style={{paddingLeft:20, flex:2, flexDirection:'row'}}>
+              <View style={{ flex:1, justifyContent:'center'}}><Ionicons name='md-image' size={25}/></View>
+              <View style={{ flex:8, justifyContent:'center'}}><Text style={{fontSize:16}}>Verse of the Day Image</Text></View>
+              <View style={{ flex:1, justifyContent:'center'}}><Text style={{color:'#dedede',fontSize:12}}>12h</Text></View>
+            </View>
+            <View style={{paddingHorizontal:20, justifyContent:'center', alignItems:'center', flex:19}}>
+              <Image source={require('../assets/images/verseImage.jpg')} style={{width:365, height:400, borderRadius:2}}/>
+            </View>
+            <View style={{paddingLeft:20, flex:2, flexDirection:'row'}}>
+            <View style={{ flex:8, justifyContent:'center'}}><Text style={{fontWeight:'bold', color:'#1bab35',fontSize:16}}>SHARE</Text></View>
+            <View style={{ flex:1, justifyContent:'center'}}><Ionicons color='#dedede' name='md-more' size={25}/></View>
+            </View>
+
+
+        </View>
+
     </View>
-  );
-}
-
-HomeScreen.navigationOptions = {
-  header: null,
-};
-
-function DevelopmentModeNotice() {
-  if (__DEV__) {
-    const learnMoreButton = (
-      <Text onPress={handleLearnMorePress} style={styles.helpLinkText}>
-        Learn more
-      </Text>
-    );
-
-    return (
-      <Text style={styles.developmentModeText}>
-        Development mode is enabled: your app will be slower but you can use
-        useful development tools. {learnMoreButton}
-      </Text>
-    );
-  } else {
-    return (
-      <Text style={styles.developmentModeText}>
-        You are not in development mode: your app will run at full speed.
-      </Text>
-    );
-  }
-}
-
-function handleLearnMorePress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/versions/latest/workflow/development-mode/'
-  );
-}
-
-function handleHelpPress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/versions/latest/workflow/up-and-running/#cant-see-your-changes'
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  developmentModeText: {
-    marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: 'center',
-  },
-  contentContainer: {
-    paddingTop: 30,
-  },
-  welcomeContainer: {
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
-  },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
-  },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: { width: 0, height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 20,
-      },
-    }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20,
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    textAlign: 'center',
-  },
-  navigationFilename: {
-    marginTop: 5,
-  },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7',
-  },
+  box:  {
+  backgroundColor: "white",
+  height: 200,
+  margin: 5,
+  flexDirection: "column",
+  borderWidth: 1,
+  borderColor: "#dedede",
+  borderRadius:3
+  }
 });
+
+HomeScreen.navigationOptions = {
+  title: "YouVersion",
+  header: null,
+  headerRight:
+  <View style={{borderRadius:20, height:5}}>
+    <Image source={require('../assets/images/robot-dev.png') } />
+  </View>
+  
+  //<View style={{flexDirection:'row', width:30, backgroundColor:"blue", borderRadius:20}}></View>
+
+
+};
